@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - NoteZilla</title>
+    <link rel="stylesheet" href="{%static 'css/login.css'%}" />
+    <link rel="shortcut icon" href="{%static 'images/fav.png'%}" type="image/x-icon">
+
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="login-box">
+            <a class="logo" href="/"
+                style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 12px; cursor: pointer;">
+                <img src="{%static 'images/fav.png'%}" style="width: 35px;">NoteZilla</a>
+            <h2>Create your account</h2>
+            {%if error%}
+            <p style="margin-bottom: 20px; color: rgb(211, 57, 57);">Uh Oh! {{ error }}</p>
+            {%endif%}
+            <form method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="name">Username</label>
+                    <input type="text" name="username" id="name" required placeholder="Steve Jobs" />
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required placeholder="you@example.com" />
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="passwd" id="password" required placeholder="••••••••" />
+                </div>
+
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+
+            <p class="footer-text">Already have an account? <a href="/login">Login</a></p>
+        </div>
+    </div>
+
+</body>
+
+</html>
